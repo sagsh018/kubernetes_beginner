@@ -1,0 +1,18 @@
+1) What is container orchestration
+    a) Underlying platform with the set of resources and capabilities, that orchestrate the connectivity between the containers and automatically
+        scale up or down based on the load
+        This whole process of automatically deploying and managing containers is known as container orhestration
+2) Orchestration Technologies
+    a) Docker swarm
+    b) kubernetes
+    c) MESOS
+3) Advantages of contaier orchestration
+    a) Application highy available, as the hardware failure will not the bring the application down as you will have be haing multiple instances
+        of same application running on multiple node 
+    b) The user traffic is load balanced accros the differnt containers 
+    c) When demand increases, we could deploy more instances of the applications seamlessly within the matter of seconds and we have an ability
+        to do that at a service level.
+    d) When we run out of hardware resources, we could scale the number of underlying nodes up or down without having to take down the application
+4) kubernetes
+    it is a container orchestration technology used to orchestrate the deployment and management of hundreds and thousands of containers in a 
+    clustred environment 

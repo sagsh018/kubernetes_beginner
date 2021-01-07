@@ -1,0 +1,58 @@
+1) Why do we need containers?
+    a) To overcome compatibility / dependencies of applications on OS and among one another
+    b) Long setup time of application stack which may include multiple apps to create an entire stack
+    c) Make your application ready for different environments like Dev/Test/Prod
+    Because of all the above factors, building and shipping the application for developers become a difficult task
+2) What Container can do?
+    a) With the help of container we can run each component of application individually along with its libraries and dependencies isolated
+        from one another
+    b) We need not to worry about the OS to run these components of application and there compatibility with that OS, We just need the docker
+        software available on OS
+    c) So with the help of Docker we could containerize the application
+    d) We could run each service with its own dependencies in separate containers.
+3) What are Containers?
+    a) They are completely isolated environments, as in they can have there own :
+        i) processes or services
+        ii) there own netorking interfaces
+        iii) there own mounts
+        Just like virtual machines, except they share the same OS kernel
+4) if we conside the differnet OS for linux available as of now, they all have same OS kernel for linux and on top of that kernel there are
+    software which makes up differnet OS's like centos, ubuntu, fedora, SUSE, etc.
+5) If we have docker installed on any of the linux based OS let say ubuntu then it can run container based on any other linux based OS let say
+    fedora, debian, SUSE, Centos untill they have same kernel. So this shows that docker container share the same OS kernel
+6) But you won't be able to run Windows based container on a docker running on linux based docker host. for that we need docker running on
+    windows host
+7) Unlike hypervisors which run VM's on them with different OS kernels, Docker is not mento to virtualize and run different OS and kernels on 
+    same hardware. The main purpose of docker is to containerize application and to ship them and to run them.
+8) Difference between VM and container
+    a) In case of VM's we have underlying hardware and then OS and on top of OS we have our hypervisor running, whereas in case of docker 
+        containers we have underlying hardware and then OS and on that OS we have docker configuration running.
+    b) In case of VM's we have Virtual machines running on top of Hypervisor of different OS flavour may be along with Application, libraries,
+        dependencies and OS for every individual VM, 
+        whereas in case of we have containers running on top of Docker installed on OS, and these contaiers are only having application and 
+        libraries and there dependencies packed and isolated from one another but all the containers share the same OS.
+    c) In case of virtual machines we have High resource utilization as every virtual machine has its own OS and other components and therefore
+        heavy weight programs. Whereas in case of Containers they are lightweight and does not have individual OS running hence less resource
+        utilization
+    d) VM's takes size in GB's whereas containers takes size in MB's 
+    e) Bootup time for VM's are more as compare to containers as container does not have OS to boot up.
+    f) Docker containers has lesser isolation as they have more resources shared in containers like the OS kernel, whereas VM's has complete 
+        isolation from each other
+    g) Since the VM's does not rely on underlying OS or kernel, you can have different types of OS based VM;s like linux based, windows based on
+        the same hypervisor, where as it is not possible on a single docker host as the OS/kernel is shared in case of containers.
+9) Once we have image for our application we can easily bring up the running instance of that application with the help of simple docker run
+    command
+10) if the image is not readily available on public registries we can create one for our application and upload them to registries so that other
+    can make use of that
+11) Suppose we want to have webserver instance made out of nodejs we could easily do
+    # docker container run nodejs
+    We can also run multiple instances/containers of the same image, and if any one of the instance breaks down then we could remove it and
+    run another instance of the same image.
+    and this break fix can be done with other methods which we will talk about later in the course.
+12) Containers vs image
+    a) Docker image : it is just a template/package/binary just like a VM template in the virtualization world
+    b) Docker container : they are running instances of these images and are isolated from one another and container there own set of processes
+        environment variables, etc.
+13) After the introduction of Docker container the developers are now building the application in a form of images and providing those
+    images to OPS team to deploy and with this way its easy for OPS to handle this as the image will run in same way everywhere untill it is 
+    modified it will not break.

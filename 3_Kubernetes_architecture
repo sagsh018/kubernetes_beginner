@@ -1,0 +1,50 @@
+1) Here we are going to understand basic concepts. we will learn various terms that we will come across while setting up a kubernetes cluster.
+2) So lets start with all the terms and concepts:
+    a) Nodes : A machine - physical or virtual on which kubernetes will be installed. This node will be a worker machine and that is where 
+        containers will be launched by kubernetes 
+        These worker nodes are also known as minions in the past
+        But what happens if the node on which your container having application goes down, obviously our application will also goes down
+        So definitely we need to have multiple nodes.
+        and this is where the need to have cluster
+    b) Cluster : A Cluster is a set of nodes grouped together, and this way even if your one node fails, you will still have your application
+        accessible with the help of other nodes.
+        moreover having multiple nodes will help in sharing load as well
+    c) Master : So as above we have cluster, but who is managing this cluster, where will the information about the members of cluster will be
+        stored, How are the nodes in cluster will be monitored and when any of the node fails, how to mode the work load of the failed node
+        to another worker node, That's where the master node comes in.
+        So the master node is another node with kubernetes installed in it and it is configured as master. and this master node watches over the
+        nodes in a cluster and is responsible for the actual orchestration of containers on the worker nodes 
+    d) Components: When we install kubernetes on a system , we install following components 
+        i) API server : Act as a front end for a kubernetes. The users, management devices, command line interfaces all talk to this API server
+            to interact with the kubernetes cluster
+        ii) etcd service : Its distributed reliable key-value store used by kubernetes to store all data used to manage the kubernetes cluster
+            So when you have multiple nodes and multiple masters in your cluster, etcd stores all that information on all the nodes in cluster 
+            in a distributed manner 
+            etcd is also responsible to implementing logs within the cluster to ensure that there is no conflict between the masters
+        iii) kubelet service : This is an agent that runs on each node in a cluster. It make sure that the containers are running on the nodes
+            as expected 
+        iv) Container Runtime : It is a underlying software to run containers. In our case it happens to be docker. but in upcoming kubernetes
+            releases docker is deprecated.
+        v) Controllers : They are the brain behind orchestration. They are responsible for noticing and responding when nodes, containers or
+            end points goes down. The controllers makes decision to bring up new containers in such cases.
+        vi) Scheduler : They are responsible for distributing work or containers across multiple nodes. It looks for newly created containers
+            and assign them to nodes 
+3) Master nodes vs Worker nodes
+    a) Worker nodes(or the minions) are the nodes where the containers are hosted, for example docker containers. and to run containers on  a 
+        system we need container run time installed, and that's where the container run time falls, and in our case it happens to be Docker
+        There could be other container runtimes also available like "rkt"(rocket), CRI-O, etc
+        These worker nodes also has kubelet agents "</>kubelet"  and these are responsible for interating to master nodes to provide the health
+        information of the worker node and carry out action requested by master on the worker nodes.
+    b) Master server : It will have kube API server "</>kube-apiserver" and this is what makes this node a master, and worker node's kubelet 
+        communicate with this kube-apiserver on master.
+        All the information about the members of cluster is stored inside key-value pair on master, and this key-value store is based on a 
+        popular etcd framework 
+        The master also has "controller" and "manager" 
+4) Finally we will look at one of the command line utility in kubernetes : kubectl(Also known as kube control). This is used :
+    a) To deploy and manage applications on a kubernetes cluster 
+    b) To get the cluster information
+    c) To get the status of other nodes in a kubernetes cluster, etc
+    "Kubectl run" command is used to deploy application in cluster 
+        # kubeclt run hello-minikube
+    "kubectl cluster-info" command is used to see information about the cluster 
+    "kubeclt get nodes" command is used to list all the nodes that are part of the cluster 
